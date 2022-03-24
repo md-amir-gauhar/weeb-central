@@ -1,0 +1,21 @@
+.tag {
+  color: var(--gray-50);
+  font-family: var(--open-sans-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  margin-top: .5rem;
+  background-color: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(1rem);
+}
+
+h3 {
+  text-align: center;
+}
+
+@media (max-width: 738px) {
+  .tag {
+    display: none;
+  }
+}
