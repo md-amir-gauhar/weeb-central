@@ -45,6 +45,7 @@
   top: 0;
   right: 5px;
   margin: 5px 5px 0 0;
+  background-color: transparent;
   text-align: center;
   border: none;
   color: var(--red);
