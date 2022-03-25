@@ -9,7 +9,7 @@
   letter-spacing: 0.1em;
   position: fixed;
   z-index: 999;
-  margin-top: 80px;
+  margin: 5rem 0;
   overflow: auto;
 }
 

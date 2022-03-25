@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { FaFilter } from 'react-icons/fa'
 
 import '../styles/Filter.css'
 
-const Filter = () => {
+const Filter = ({mnag, setManga}) => {
   const [isChecked, setIsChecked] = useState({
     lowtohigh: false,
     hightolow: false,
@@ -43,6 +44,14 @@ const Filter = () => {
       setCategories({ ...categories, sciFi: categories.sciFi === true ? false : true })
     }
   }
+
+  useEffect(() => {
+    (async () => {
+      const data = await axios.get('/api/products');
+      let items = data.data.products
+      setManga([...items])
+    })()
+  }, [])
 
   return (
     <section className="filter-container">

@@ -1,0 +1,25 @@
+.products {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20vw;
+  margin-top: 6rem;
+  width: 100%;
+  height: 100%;
+}
+
+.products h2 {
+  font-size: 1.7rem;
+  font-family: var(--open-sans-font);
+  
+  color: var(--gray-50);
+}
+
+.card-container {
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+}
