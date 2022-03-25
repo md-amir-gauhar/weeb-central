@@ -25,7 +25,7 @@ const Header = () => {
           <div className="dropdown">
             <Link to='#' onClick={() => setToggleDown(!toggleDown)}>PRODUCTS <IoMdArrowDropdown /></Link>
             {toggleDown && <ul className="dropdown__items">
-              <li><Link to="/product/manga">Manga</Link></li>
+              <li><Link to="/products/manga">Manga</Link></li>
               <li><Link to="#">Blu-rays</Link></li>
               <li><Link to="#">Merchandise</Link></li>
               <li><Link to="#">Accessories</Link></li>
