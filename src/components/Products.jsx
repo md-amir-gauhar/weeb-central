@@ -1,16 +1,19 @@
 import React from 'react'
 import Card from './Card'
 
+import { useData } from '../context/DataContext'
+
 import '../styles/Products.css'
 
+const Products = () => {
+  const { products } = useData()
 
-const Products = ({manga}) => {
   return (
-    <section className="products">
-      <h2>Mangas</h2>
-      <div className="card-container">
+    <section className="products flex flex-col">
+      <h3>Showing Manga (<span>{products.length} Items</span>)</h3>
+      <div className="card-container flex justify-center">
         {
-          manga.map(({ _id, title, price, imgUrl, rating }) => (
+          products.map(({ _id, title, price, imgUrl, rating }) => (
             <Card
               key={_id}
               name={title}
