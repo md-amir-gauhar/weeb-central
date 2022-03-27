@@ -1,7 +1,9 @@
 import Tag from '../components/Tag'
 import Categories from '../components/Categories'
+import Footer from '../components/Footer'
 
 import '../styles/Home.css'
+
 
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
       <div className="banner"></div>
       
       <Categories />
+      <Footer />
     </div>
   )
 }
