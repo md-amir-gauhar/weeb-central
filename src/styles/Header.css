@@ -4,7 +4,7 @@
   padding: 1rem 2rem 1rem 3rem;
   display: flex;
   width: 100%;
-  position: fixed;
+  position: sticky;
   z-index: 9999;
   top: 0;
 }
@@ -82,7 +82,7 @@
 .navbar__right a {
   padding: 1rem;
   flex-direction: column;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .navbar__right a.login {
@@ -107,6 +107,16 @@
   color: var(--gray-50);
   padding: 2rem 0 0 0;
   font-size: 2rem;
+}
+
+.wishlist-link {
+  position: relative;
+}
+
+.wishlist-length {
+  position: absolute;
+  top: 1.2rem;
+  right: 2.6rem;
 }
 
 @media (max-width: 1024px) {

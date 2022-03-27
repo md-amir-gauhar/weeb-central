@@ -6,10 +6,12 @@ import { GiBeachBag, GiHamburgerMenu } from 'react-icons/gi'
 import { IoMdArrowDropdown } from 'react-icons/io'
 
 import '../styles/Header.css'
+import { useWishlist } from '../context/wishlistContext'
 
 const Header = () => {
   const [open, setOpen] = useState(false)
   const [toggleDown, setToggleDown] = useState(false)
+  const { wishlist } = useWishlist()
   return (
     <header className='header'>
       <div className="header__logo">
@@ -35,17 +37,18 @@ const Header = () => {
         </div>
         <div className="navbar__right flex align-center">
           <Link to='/auth' className="login flex align-center">LOGIN/SIGNUP</Link>
-          <Link to='/wishlist' className='flex align-center'>
+          <Link to='/wishlist' className='wishlist-link flex align-center'>
             <AiFillHeart style={{
               color: 'red'
             }} />
             <span>Wishlist</span>
+            {wishlist.length > 0 ? <span className='wishlist-length'>{wishlist.length}</span> : ""}
           </Link>
           <Link to='/cart' className='flex align-center'>
             <GiBeachBag style={{
               color: '#d97706'
             }} />
-            <span>Bag</span>
+            <span>Cart</span>
           </Link>
         </div>
       </nav>
