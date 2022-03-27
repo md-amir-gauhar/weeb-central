@@ -29,7 +29,11 @@ const DataProvider = ({ children }) => {
 
   const value = {
     products: state.products,
-    categories: state.category
+    categories: state.category,
+    filteredProducts: state.filteredProducts,
+    sortByPrice: state.sortByPrice,
+    sortByRating: state.sortByRating,
+    dispatch,
   }
 
   return (
@@ -41,4 +45,4 @@ const DataProvider = ({ children }) => {
 
 const useData = () => useContext(DataContext)
 
-export {useData, DataProvider}
+export { useData, DataProvider }

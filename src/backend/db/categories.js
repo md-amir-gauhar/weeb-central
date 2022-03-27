@@ -8,15 +8,19 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Action",
+    categoryName: "Shonen",
   },
   {
     _id: uuid(),
-    categoryName: "Romance",
+    categoryName: "Seinen",
   },
   {
     _id: uuid(),
-    categoryName: "Slice of life",
+    categoryName: "Shojo",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Sports manga",
   },
   {
     _id: uuid(),
@@ -25,10 +29,6 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Comedy",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Adventure",
   },
   {
     _id: uuid(),

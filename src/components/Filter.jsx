@@ -1,74 +1,67 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+import { AiFillStar } from 'react-icons/ai'
 import { FaFilter } from 'react-icons/fa'
+
+import { useData } from '../context/DataContext'
 
 import '../styles/Filter.css'
 
-const Filter = ({mnag, setManga}) => {
-  const [isChecked, setIsChecked] = useState({
-    lowtohigh: false,
-    hightolow: false,
-  })
 
-  const [categories, setCategories] = useState({
-    action: false,
-    romance: false,
-    sliceOfLife: false,
-    fantasy: false,
-    comedy: false,
-    adventure: false,
-    sciFi: false
-  })
+const star = [4, 3, 2]
 
-  const radioHandler = e => {
-    const { name } = e.target;
-    if (name === 'low') setIsChecked({ ...isChecked, lowtohigh: true, hightolow: false })
-    else setIsChecked({ ...isChecked, lowtohigh: false, hightolow: true })
+const Filter = () => {
+  const { categories, dispatch, sortByPrice, sortByRating } = useData()
+
+  const sortByPriceHandler = e => {
+    dispatch({
+      type: "SORT_BY_PRICE",
+      payload: e.target.name
+    })
   }
 
-  const checkboxHandler = (e) => {
-    const { name } = e.target;
-    if (name === "action") {
-      setCategories({ ...categories, action: categories.action === true ? false : true })
-    } else if (name === "romance") {
-      setCategories({ ...categories, romance: categories.romance === true ? false : true })
-    } else if (name === "sliceoflife") {
-      setCategories({ ...categories, sliceOfLife: categories.sliceOfLife === true ? false : true })
-    } else if (name === "fantasy") {
-      setCategories({ ...categories, fantasy: categories.fantasy === true ? false : true })
-    } else if (name === "comedy") {
-      setCategories({ ...categories, comedy: categories.comedy === true ? false : true })
-    } else if (name === "adventure") {
-      setCategories({ ...categories, adventure: categories.adventure === true ? false : true })
-    } else {
-      setCategories({ ...categories, sciFi: categories.sciFi === true ? false : true })
-    }
+  const sortByRatingHandler = s => {
+    dispatch({
+      type: "SORT_BY_RATING",
+      payload: s
+    })
   }
 
-  useEffect(() => {
-    (async () => {
-      const data = await axios.get('/api/products');
-      let items = data.data.products
-      setManga([...items])
-    })()
-  }, [])
+  const checkboxHandler = (key, e) => {
+    dispatch({
+      type: 'CATEGORIES',
+      payload: {
+        [key]: e.target.checked
+      }
+    })
+  }
+
+  const isSortByPrice = type => sortByPrice && sortByPrice === type
+
+  const isSortByRating = star => sortByRating && sortByRating === star
+
+  const clearAllHandler = () => {
+    dispatch({
+      type: "CLEAR_ALL",
+      payload: categories
+    })
+  }
 
   return (
     <section className="filter-container">
       <div className='filter'>
         <div className="filter-header">
           <h2><FaFilter /><span>Filters</span></h2>
-          <button>Clear All</button>
+          <button onClick={clearAllHandler}>Clear All</button>
         </div>
         <div className="filter-sort">
-          <span>SORT</span>
+          <span>SORT BY PICE</span>
           <div>
             <input
               type="radio"
-              name='low'
+              name='low-to-high'
               value='low'
-              checked={isChecked.lowtohigh}
-              onChange={radioHandler}
+              checked={isSortByPrice("low-to-high")}
+              onChange={e => sortByPriceHandler(e)}
             />
             <label>Low to High</label><br />
           </div>
@@ -76,92 +69,45 @@ const Filter = ({mnag, setManga}) => {
             <input
               type="radio"
               value="high"
-              name='high'
-              checked={isChecked.hightolow}
-              onChange={radioHandler}
+              name='high-to-low'
+              checked={isSortByPrice("high-to-low")}
+              onChange={e => sortByPriceHandler(e)}
             />
             <label>High to Low</label><br />
           </div>
         </div>
         <div className="filter-categories">
           <span>CATEGORIES</span>
-          <div>
-            <input
-              type="checkbox"
-              name="action"
-              value="action"
-              checked={categories.action}
-              onChange={checkboxHandler}
-            />
-            <label>Action</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="romance"
-              value="romance"
-              checked={categories.romance}
-              onChange={checkboxHandler}
-            />
-            <label>Romance</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="sliceoflife"
-              value="sliceoflife"
-              checked={categories.sliceOfLife}
-              onChange={checkboxHandler}
-            />
-            <label>Slice of Life</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="fantasy"
-              value="fantasy"
-              checked={categories.fantasy}
-              onChange={checkboxHandler}
-            />
-            <label>Fantasy</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="comedy"
-              value="comedy"
-              checked={categories.comedy}
-              onChange={checkboxHandler}
-            />
-            <label>Comedy</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="adventure"
-              value="adventure"
-              checked={categories.adventure}
-              onChange={checkboxHandler}
-            />
-            <label >Adventure</label><br />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="sci-fi"
-              value="sci-fi"
-              checked={categories.sciFi}
-              onChange={checkboxHandler}
-            />
-            <label>Sci-fi</label><br />
-          </div>
+          {
+            Object.entries(categories).map(([key, val]) => {
+              return (
+                <div key={key}>
+                  <input
+                    type="checkbox"
+                    checked={val}
+                    onChange={(e) => checkboxHandler(key, e)}
+                  />
+                  <label>{key}</label>
+                </div>
+              )
+            })
+          }
         </div>
-        <div className="filter-other">
-          <span>OTHER</span>
-          <div>
-            <input type="checkbox" name="outofstock" value="outofstock" />
-            <label>Out of Stock</label><br />
-          </div>
+        <div className="filter-sort">
+          <span>SORT BY RATINGS</span>
+          {
+            star.map(s => (
+              <div key={s}>
+                <input
+                  type="radio"
+                  name={s}
+                  checked={isSortByRating(s)}
+                  onChange={() => sortByRatingHandler(s)}
+                />
+                <label>{s}<AiFillStar /> & above </label>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>

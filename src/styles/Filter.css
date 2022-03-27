@@ -10,7 +10,7 @@
   position: fixed;
   z-index: 999;
   margin: 5rem 0;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .filter::-webkit-scrollbar {
