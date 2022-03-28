@@ -53,7 +53,7 @@ const WishListProvider = ({ children }) => {
   }
 
   const removeFromWishlist = (product) => {
-    const updatedWishlist = state.wishlist.filter(t => t.id !== product.id)
+    const updatedWishlist = state.wishlist.filter(item => item.id !== product.id)
     dispatch({
       type: "REMOVE_FROM_WISHLIST",
       payload: updatedWishlist
