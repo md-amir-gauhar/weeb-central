@@ -1,0 +1,31 @@
+.cart {
+  width: 60vw;
+  margin: 2rem auto;
+  font-family: var(--oswald-font);
+  margin-top: 90px;
+}
+
+.title {
+  margin: 1rem 0;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 2rem;
+  color: var(--gray-50);
+}
+
+.title > svg {
+  font-size: 2rem;
+}
+
+.checkouts {
+  justify-content: flex-start;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+  border-right: 1px solid var(--gray-400);
+  padding-right: 1rem;
+}
