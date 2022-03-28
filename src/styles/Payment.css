@@ -1,0 +1,68 @@
+.payment-checkout {
+  padding-left: 1rem;
+  width: 30%;
+  color: var(--gray-50);
+}
+
+.payment-checkout h3 {
+  margin-bottom: 1rem;
+}
+
+.payment-checkout div:not(:first-of-type) {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.coupons h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.coupons button {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  text-align: center;
+}
+
+.payment-checkout > h3 {
+  color: var(--gray-400);
+}
+
+.payment-checkout div:not(:first-of-type) span:first-child {
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+.payment-checkout button {
+  width: 100%;
+}
+
+.coupons button,
+.payment-checkout button {
+  margin-top: 1rem;
+  background-color: transparent;
+  text-transform: capitalize;
+  padding: 0.5rem;
+  color: var(--gray-50);
+  font-family: var(--oswald-font);
+  font-size: 1.1rem;
+  border: 1px solid var(--gray-50);
+  border-radius: 2px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.coupons button:hover,
+.payment-checkout button:hover {
+  cursor: pointer;
+  background-color: var(--gray-50);
+  color: var(--gray-1000);
+  font-weight: 900;
+}

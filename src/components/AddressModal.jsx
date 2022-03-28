@@ -31,6 +31,7 @@ const AddressModal = ({ setOpenModal }) => {
   return (
     <div className='modal-container flex align-center justify-center'>
       <div className="modal flex flex-col">
+        <h2>Edit Address</h2>
         <form className='flex flex-col' onSubmit={submitHandler}>
           <input
             type="text"

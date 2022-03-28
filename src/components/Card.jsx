@@ -4,10 +4,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AiFillHeart, AiFillStar, AiOutlineClose } from 'react-icons/ai'
 import { BsBagCheck } from 'react-icons/bs'
 import { useWishlist } from '../context/wishlistContext'
+import { useCart } from '../context/cartContext';
+
 import '../styles/Card.css'
 
 const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
   const { addToWishlist, removeFromWishlist } = useWishlist()
+  const { addToCart } = useCart()
 
   const addToWishlistHandler = () => {
     addToWishlist({ id, name, imgUrl, rating, price })
@@ -16,6 +19,11 @@ const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
   const removeFromWishlistHandler = () => {
     removeFromWishlist({ id, name, imgUrl, rating, price })
   }
+
+  const addToCartHandler = () => {
+    addToCart({ id, name, imgUrl, rating, price, quantity: 1 })
+  }
+
   return (
     <div className='card'>
       <img
@@ -41,7 +49,7 @@ const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
           <span className='price'>₹{price}</span>
         </div>
       </div>
-      <button className='cart-button flex align-center justify-center'><span>Move to Bag</span> <BsBagCheck /></button>
+      <button className='cart-button flex align-center justify-center' onClick={(addToCartHandler)} ><span>Move to Bag</span> <BsBagCheck /></button>
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
