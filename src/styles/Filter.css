@@ -75,3 +75,8 @@
   padding-left: 1rem;
   margin: 0.2rem 0;
 }
+
+.star-rating{
+  font-size: 1rem;
+  color: var(--gold);
+}

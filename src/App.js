@@ -4,6 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 import Header from './components/Header';
+import Auth from './pages/Auth';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Manga from './pages/Manga';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/products/manga" element={<Manga />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/auth" element={<Auth />} />
         </Routes>
         
       </div>
