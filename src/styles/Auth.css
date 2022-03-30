@@ -5,11 +5,13 @@
   color: var(--gray-50);
 }
 
-.sign-in {
+.sign-in,
+.sign-up {
   width: 380px;
 }
 
-.sign-in > h2 {
+.sign-in > h2,
+.sign-up > h2 {
   font-size: 2rem;
   margin: 10px 0;
   color: var(--gray-400);
@@ -24,15 +26,17 @@
   margin: 3rem 0;
 }
 
-input {
+#username-input,
+input[type='email'],
+input[type='password'] {
   background: none;
-  background-color: transparent;
   color: var(--gray-50);
   font-size: 1rem;
   padding: 0.625rem 0.3rem;
   display: block;
   width: 100%;
   border: none;
+  border-radius: 0;
   border-bottom: 1px solid var(--gray-50);
   margin: 1.5rem 0;
   font-style: inherit;
@@ -51,12 +55,6 @@ input:focus {
   left: 0.313rem;
   top: 0.1rem;
   transition: 300ms ease all;
-}
-
-input:focus .label {
-  top: -1rem;
-  font-size: 1rem;
-  color: var(--gray-400);
 }
 
 .shrink {
