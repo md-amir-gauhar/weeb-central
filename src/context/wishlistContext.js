@@ -39,7 +39,7 @@ const WishListProvider = ({ children }) => {
   const [state, dispatch] = useReducer(wishlistReducer, initialState)
 
   const addToWishlist = (product) => {
-    const existingItem = state.wishlist.find(item => item.id === product.id);
+    const existingItem = state.wishlist.find(item => item.name === product.name);
     if (existingItem) {
       ErrorToast()
       return
