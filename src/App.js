@@ -11,6 +11,7 @@ import Manga from './pages/Manga';
 import Wishlist from './pages/Wishlist';
 
 import './styles/app.css'
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
   return (
@@ -20,11 +21,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products/manga" element={<Manga />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/wishlist" element={
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          } />
+          <Route path="/cart" element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          } />
+
         </Routes>
-        
+
       </div>
     </Router>
   );

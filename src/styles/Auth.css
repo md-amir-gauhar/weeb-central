@@ -40,6 +40,7 @@ input[type='password'] {
   border-bottom: 1px solid var(--gray-50);
   margin: 1.5rem 0;
   font-style: inherit;
+  font-family: var(--oswald-font);
 }
 
 input:focus {
@@ -70,7 +71,7 @@ input:focus {
   letter-spacing: 0.03rem;
   line-height: 3.125rem;
   font-size: 1rem;
-  padding-top: 0.5rem;
+  /* padding-top: 0.5rem; */
   background-color: var(--gray-50);
   color: var(--gray-1000);
   text-transform: uppercase;

@@ -1,38 +1,91 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
+import { setAuthData } from '../utils/authUtil'
+import { useAuth } from '../context/AuthContext'
 import '../styles/Auth.css'
 
 const Signup = () => {
-  const [credentials, setCredentials] = useState({ displayName: "", email: "", password: "", confirmPassword: "" })
+  const { dispatch } = useAuth()
+  const [credentials, setCredentials] = useState({ username: "", email: "", password: "", confirmPassword: "" })
 
 
+  const [goto, setGoto] = useState(false);
   const [focusedDisplayName, setFocusedDisplayName] = useState(false)
   const [focusedEmail, setFocusedEmail] = useState(false)
   const [focusedPassword, setFocusedPassword] = useState(false)
   const [focusedConfirmPassword, setFocusedConfirmPassword] = useState(false)
+
+  const { username, email, password, confirmPassword } = credentials;
 
   const handleChange = e => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value })
   }
 
+  const sendReq = async (body) => {
+    try {
+      const response = await axios.post('/api/auth/signup', body);
+      console.log(response.data);
+      setAuthData(response.data.encodedToken);
+      return response.data.encodedToken;
+    } catch (error) {
+      if (error.response.status === 422) {
+        console.log("user already exists");
+      }
+      console.log(error.message);
+      console.log(error.response)
+    }
+  }
 
-  const { displayName, email, password, confirmPassword } = credentials;
+  const submitHandler = (e) => {
+    if (password === confirmPassword) {
+      sendReq({
+        username,
+        email,
+        password,
+      }).then((res) => {
+        dispatch({
+          type: 'SIGNED_UP',
+          payload: res === undefined ? null : res,
+        });
+        setGoto(res === undefined ? false : true);
+      });
+      setCredentials({
+        ...credentials,
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      });
+    } else {
+      console.log("password not same")
+      setCredentials({ ...credentials, password: '', confirmPassword: '' });
+    }
+    e.preventDefault();
+  };
+
+  // if (goto) {
+  //   return <Navigate to='/' />;
+  // }
+
+
   return (
     <section className="sign-up">
       <h2>I do not have an account</h2>
       <span>Sign up with your email and password</span>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="username">
           <label
-            className={`${displayName.length > 0 || focusedDisplayName ? 'shrink' : ''} label`}
+            className={`${username.length > 0 || focusedDisplayName ? 'shrink' : ''} label`}
           >
             Display Name
           </label>
           <input
             id="username-input"
             type="text"
-            name="displayName"
-            value={displayName}
+            name="username"
+            value={username}
             onChange={handleChange}
             onFocus={() => setFocusedDisplayName(true)}
             onBlur={() => setFocusedDisplayName(false)}
