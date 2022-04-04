@@ -65,9 +65,9 @@ const Signup = () => {
     e.preventDefault();
   };
 
-  // if (goto) {
-  //   return <Navigate to='/' />;
-  // }
+  if (goto) {
+    return <Navigate to='/' />;
+  }
 
 
   return (
