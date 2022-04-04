@@ -14,7 +14,6 @@ const Cart = () => {
   const { addToWishlist } = useWishlist()
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } = useCart()
 
-  console.log(cart.length);
   return (
     <main className='cart' >
       {cart.length === 0 ? (

@@ -16,9 +16,8 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const { wishlist } = useWishlist()
   const { cart } = useCart()
-  const { isUser, token } = useAuth()
+  const { isUser } = useAuth()
 
-  console.log(isUser, token);
   return (
     <header className='header'>
       <Link to="/" className="header__logo">
