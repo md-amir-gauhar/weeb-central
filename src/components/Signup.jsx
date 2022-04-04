@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { setAuthData } from '../utils/authUtil'
 import { useAuth } from '../context/AuthContext'
+import { passwordDidNotMatch, userAlreadyExists } from '../utils/toasts'
+
 import '../styles/Auth.css'
 
 const Signup = () => {
@@ -31,10 +33,8 @@ const Signup = () => {
       return response.data.encodedToken;
     } catch (error) {
       if (error.response.status === 422) {
-        console.log("user already exists");
+        userAlreadyExists()
       }
-      console.log(error.message);
-      console.log(error.response)
     }
   }
 
@@ -59,7 +59,7 @@ const Signup = () => {
         confirmPassword: '',
       });
     } else {
-      console.log("password not same")
+      passwordDidNotMatch()
       setCredentials({ ...credentials, password: '', confirmPassword: '' });
     }
     e.preventDefault();

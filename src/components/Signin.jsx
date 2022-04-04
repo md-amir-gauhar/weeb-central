@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { setAuthData } from '../utils/authUtil'
 import { useAuth } from '../context/AuthContext'
+import { invalidCredentials, userDoesNotExists, loggedInSuccessfully } from '../utils/toasts'
 
 import '../styles/Auth.css'
 
 
 
 const Signin = () => {
-  const { dispatch,} = useAuth()
+  const { dispatch, } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [focusedInput, setFocusedInput] = useState(false)
@@ -20,8 +21,11 @@ const Signin = () => {
       setAuthData(response.data.encodedToken);
       return response.data.encodedToken;
     } catch (err) {
-      if (err.response.status === 422) {
-        console.log("user exists")
+      if (err.response.status === 404) {
+        invalidCredentials()
+      }
+      if (err.response.status === 401) {
+        userDoesNotExists()
       }
     }
   }
@@ -35,6 +39,7 @@ const Signin = () => {
         type: "LOGGED_IN",
         payload: res === undefined ? null : res
       })
+      loggedInSuccessfully()
     })
     e.preventDefault()
   }
@@ -69,7 +74,7 @@ const Signin = () => {
           />
         </div>
         <div className="auth-buttons flex align-center justify-between">
-          <button className='flex align-center justify-center'>Sign In</button>
+          <button className='flex align-center justify-center'>Log In</button>
           <button className="google-sign-in flex align-center justify-center">Sign In with Google</button>
         </div>
       </form>

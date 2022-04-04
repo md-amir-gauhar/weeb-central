@@ -3,6 +3,11 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import PrivateRoute from './utils/PrivateRoute';
 import Header from './components/Header';
 import Auth from './pages/Auth';
 import Cart from './pages/Cart';
@@ -11,12 +16,23 @@ import Manga from './pages/Manga';
 import Wishlist from './pages/Wishlist';
 
 import './styles/app.css'
-import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
   return (
     <Router>
       <div className="app">
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='dark'
+        />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
