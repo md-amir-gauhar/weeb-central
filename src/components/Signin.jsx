@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { setAuthData } from '../utils/authUtil'
+import { setAuthData, setUserData } from '../utils/authUtil'
 import { useAuth } from '../context/AuthContext'
 import { invalidCredentials, userDoesNotExists, loggedInSuccessfully } from '../utils/toasts'
 
 import '../styles/Auth.css'
+import { Navigate } from 'react-router-dom'
 
 
 
@@ -14,6 +15,7 @@ const Signin = () => {
   const [password, setPassword] = useState('')
   const [focusedInput, setFocusedInput] = useState(false)
   const [focusedPassword, setFocusedPassword] = useState(false)
+  const [goto, setGoto] = useState(false);
 
   const sendReq = async (body) => {
     try {
@@ -31,6 +33,7 @@ const Signin = () => {
   }
 
   const submitHandler = (e) => {
+    e.preventDefault()
     sendReq({
       email,
       password
@@ -39,9 +42,14 @@ const Signin = () => {
         type: "LOGGED_IN",
         payload: res === undefined ? null : res
       })
+      setGoto(res === undefined ? false : true);
       loggedInSuccessfully()
     })
-    e.preventDefault()
+    return <Navigate to="/" />
+  }
+
+  if (goto) {
+    return <Navigate to='/' />;
   }
 
   return (

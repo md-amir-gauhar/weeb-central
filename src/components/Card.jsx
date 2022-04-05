@@ -3,14 +3,21 @@ import { AiFillHeart, AiFillStar, AiOutlineClose } from 'react-icons/ai'
 import { BsBagCheck } from 'react-icons/bs'
 import { useWishlist } from '../context/wishlistContext'
 import { useCart } from '../context/cartContext';
-
+import { useAuth } from '../context/AuthContext'
+import { youMustBeLoggedIn } from '../utils/toasts';
 import '../styles/Card.css'
+
 
 const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
   const { addToWishlist, removeFromWishlist } = useWishlist()
   const { addToCart } = useCart()
+  const { isUser } = useAuth()
 
   const addToWishlistHandler = () => {
+    if (!isUser) {
+      youMustBeLoggedIn()
+      return
+    }
     addToWishlist({ id, name, imgUrl, rating, price })
   }
 
@@ -19,6 +26,10 @@ const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
   }
 
   const addToCartHandler = () => {
+    if (!isUser) {
+      youMustBeLoggedIn()
+      return
+    }
     addToCart({ id, name, imgUrl, rating, price, quantity: 1 })
   }
 
@@ -48,7 +59,7 @@ const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
         </div>
       </div>
       <button className='cart-button flex align-center justify-center' onClick={(addToCartHandler)} ><span>Move to Bag</span> <BsBagCheck /></button>
-      
+
     </div>
   )
 }

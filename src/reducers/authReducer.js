@@ -2,7 +2,7 @@ import { getAuthData } from '../utils/authUtil'
 
 const initialState = {
   isUser: getAuthData() ? true : false,
-  token: getAuthData()
+  token: getAuthData(),
 }
 
 
@@ -13,13 +13,13 @@ const authReducer = (state, { type, payload }) => {
       return {
         ...state,
         isUser: payload ? true : false,
-        token: payload
+        token: payload,
       }
     case "LOGGED_OUT":
       return {
         ...state,
         isUser: false,
-        token: null
+        token: null,
       }
     default:
       return state

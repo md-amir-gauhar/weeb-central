@@ -1,37 +1,8 @@
 import { useContext, createContext, useReducer } from "react"
 import { initialState, wishlistReducer } from "../reducers/wishlistReducer"
-import { toast } from 'react-toastify';
+import { addToWishlistToast, itemAlreadyInWishlist, removeFromWishlistToast } from "../utils/toasts";
 
-const ErrorToast = () => toast.error('Item already in the wishlist', {
-  position: "bottom-center",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
 
-});
-
-const addToWishlistToast = () => toast.success('Item added to wishlist Successfully', {
-  position: "bottom-center",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-});
-
-const removeFromWishlistToast = () => toast.success('Item removed to wishlist Successfully', {
-  position: "bottom-center",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-});
 
 const WishListContext = createContext()
 
@@ -41,7 +12,7 @@ const WishListProvider = ({ children }) => {
   const addToWishlist = (product) => {
     const existingItem = state.wishlist.find(item => item.name === product.name);
     if (existingItem) {
-      ErrorToast()
+      itemAlreadyInWishlist()
       return
     }
     const updatedWishlist = state.wishlist.concat(product)

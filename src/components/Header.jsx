@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, Navigate } from 'react-router-dom'
 
 import { useWishlist } from '../context/wishlistContext'
 import { useCart } from '../context/cartContext'
 import { useAuth } from '../context/AuthContext'
+import { removeAuthData } from '../utils/authUtil'
 
 import { AiFillHeart, AiOutlineClose } from 'react-icons/ai'
 import { GiBeachBag, GiHamburgerMenu } from 'react-icons/gi'
-import { FaUserCircle } from 'react-icons/fa'
+import { FiLogOut } from 'react-icons/fi'
 
 import '../styles/Header.css'
 
@@ -16,7 +16,15 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const { wishlist } = useWishlist()
   const { cart } = useCart()
-  const { isUser } = useAuth()
+  const { isUser, dispatch } = useAuth()
+
+  const logoutHandler = () => {
+    removeAuthData()
+    dispatch({
+      type: 'LOGGED_OUT',
+    });
+    return <Navigate to='/auth' />;
+  }
 
   return (
     <header className='header'>
@@ -31,9 +39,9 @@ const Header = () => {
         <div className="navbar__right flex align-center">
           {
             isUser ? (
-              <Link to='#' className="flex align-center">
-                <FaUserCircle />
-                <span>User</span>
+              <Link to='#' className="flex align-center" onClick={logoutHandler}>
+                <FiLogOut />
+                <span>Logout</span>
               </Link>
             ) : (<Link to='/auth' className="login flex align-center">LOGIN/SIGNUP</Link>
             )}

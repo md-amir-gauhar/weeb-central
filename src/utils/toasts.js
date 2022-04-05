@@ -10,6 +10,16 @@ export const ErrorCartToast = () => toast.error('Item already in the Cart', {
   progress: undefined,
 });
 
+export const youMustBeLoggedIn = () => toast.error('You must be logged in to perform this task', {
+  position: "bottom-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+
 export const invalidCredentials = () => toast.error('Invalid credentials. Please check and try again', {
   position: "bottom-center",
   autoClose: 5000,
@@ -61,6 +71,37 @@ export const loggedInSuccessfully = () => toast.success('Successfully logged in!
 });
 
 export const addToCartToast = () => toast.success('Item added to Cart Successfully', {
+  position: "bottom-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+
+export const itemAlreadyInWishlist = () => toast.error('Item already in the wishlist', {
+  position: "bottom-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+
+});
+
+export const addToWishlistToast = () => toast.success('Item added to wishlist Successfully', {
+  position: "bottom-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+
+export const removeFromWishlistToast = () => toast.success('Item removed to wishlist Successfully', {
   position: "bottom-center",
   autoClose: 5000,
   hideProgressBar: false,

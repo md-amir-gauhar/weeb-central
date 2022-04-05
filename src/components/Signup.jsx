@@ -28,9 +28,9 @@ const Signup = () => {
   const sendReq = async (body) => {
     try {
       const response = await axios.post('/api/auth/signup', body);
-      console.log(response.data);
       setAuthData(response.data.encodedToken);
-      return response.data.encodedToken;
+
+      return response;
     } catch (error) {
       if (error.response.status === 422) {
         userAlreadyExists()
