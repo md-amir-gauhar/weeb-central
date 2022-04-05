@@ -1,28 +1,6 @@
 import { useContext, createContext, useReducer } from 'react'
 import { cartReducer, initialState } from '../reducers/cartReducer'
-import { toast } from 'react-toastify';
-
-const ErrorToast = () => toast.error('Item already in the Cart', {
-  position: "bottom-center",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-
-});
-
-const addToCartToast = () => toast.success('Item added to Cart Successfully', {
-  position: "bottom-center",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-
-});
+import { addToCartToast, ErrorCartToast } from '../utils/toasts';
 
 const CartContext = createContext()
 
@@ -32,7 +10,7 @@ const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     const existingItem = state.cart.find(item => item.id === product.id);
     if (existingItem) {
-      ErrorToast()
+      ErrorCartToast()
       return
     }
 

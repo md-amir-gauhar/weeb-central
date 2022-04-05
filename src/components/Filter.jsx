@@ -104,7 +104,7 @@ const Filter = () => {
                   checked={isSortByRating(s)}
                   onChange={() => sortByRatingHandler(s)}
                 />
-                <label>{s}<AiFillStar /> & above </label>
+                <label>{s}<AiFillStar className="star-rating" /> & above </label>
               </div>
             ))
           }

@@ -9,8 +9,6 @@ import { filterData, sortData } from '../utils'
 const Products = () => {
   const { products, categories, sortByPrice, sortByRating } = useData()
 
-  console.log(categories);
-
   const filteredData = filterData(products, categories)
 
   const sortedData = sortData([...filteredData], sortByPrice, sortByRating)

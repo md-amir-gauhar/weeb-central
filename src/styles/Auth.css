@@ -1,0 +1,98 @@
+.sign-in-and-sign-up {
+  width: 850px;
+  margin: 1.5rem auto;
+  font-family: var(--oswald-font);
+  color: var(--gray-50);
+}
+
+.sign-in,
+.sign-up {
+  width: 380px;
+}
+
+.sign-in > h2,
+.sign-up > h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+  color: var(--gray-400);
+  font-weight: 700;
+}
+
+.email,
+.password,
+.username,
+.confirm-password {
+  position: relative;
+  margin: 3rem 0;
+}
+
+#username-input,
+input[type='email'],
+input[type='password'] {
+  background: none;
+  color: var(--gray-50);
+  font-size: 1rem;
+  padding: 0.625rem 0.3rem;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--gray-50);
+  margin: 1.5rem 0;
+  font-style: inherit;
+  font-family: var(--oswald-font);
+}
+
+input:focus {
+  outline: none;
+}
+
+.label {
+  color: var(--gray-50);
+  font-size: 1.2rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0.313rem;
+  top: 0.1rem;
+  transition: 300ms ease all;
+}
+
+.shrink {
+  top: -1rem;
+  font-size: 1rem;
+  color: var(--gray-400);
+}
+
+.auth-buttons button {
+  min-width: 11rem;
+  width: auto;
+  height: 3.125rem;
+  letter-spacing: 0.03rem;
+  line-height: 3.125rem;
+  font-size: 1rem;
+  /* padding-top: 0.5rem; */
+  background-color: var(--gray-50);
+  color: var(--gray-1000);
+  text-transform: uppercase;
+  font-family: var(--open-sans-font);
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-buttons button:hover {
+  background-color: transparent;
+  color: var(--gray-50);
+  border: 1px solid var(--gray-50);
+}
+
+.auth-buttons button.google-sign-in {
+  background-color: var(--blue-primary);
+  color: var(--gray-50);
+}
+
+.auth-buttons button.google-sign-in:hover {
+  background-color: var(--blue-secondary);
+  border: none;
+}

@@ -11,6 +11,8 @@
   --gray-400: #9ca3af;
   --gold: gold;
   --red: rgb(255, 55, 55);
+  --blue-primary: #4285f4;
+  --blue-secondary: #357ae8;
   --open-sans-font: 'Open Sans Condensed', sans-serif;
   --oswald-font: 'Oswald', sans-serif;
 }

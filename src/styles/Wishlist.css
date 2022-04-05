@@ -1,8 +1,33 @@
 .wishlist-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding-top: 1.5rem;
   height: calc(100vh - 10rem);
+  font-family: var(--oswald-font);
+}
+
+.empty-wishlist {
+  color: var(--gray-50);
+  height: 50%;
+  gap: 5rem;
+}
+
+.empty-wishlist > h1,
+.empty-wishlist > h1 > svg {
+  gap: 1rem;
+  font-size: 3rem;
+  font-weight: 200;
+}
+
+.empty-wishlist > a {
+  border: 1px solid var(--gray-50);
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.empty-wishlist > a:hover {
+  background-color: var(--gray-50);
+  color: var(--gray-1000);
 }
 
 .wishlist-container h2 {

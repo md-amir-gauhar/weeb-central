@@ -1,6 +1,4 @@
 import React from 'react'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { AiFillHeart, AiFillStar, AiOutlineClose } from 'react-icons/ai'
 import { BsBagCheck } from 'react-icons/bs'
 import { useWishlist } from '../context/wishlistContext'
@@ -50,18 +48,7 @@ const Card = ({ name, imgUrl, rating, price, pathname, id }) => {
         </div>
       </div>
       <button className='cart-button flex align-center justify-center' onClick={(addToCartHandler)} ><span>Move to Bag</span> <BsBagCheck /></button>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
+      
     </div>
   )
 }

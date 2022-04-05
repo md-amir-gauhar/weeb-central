@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 
 import { useWishlist } from '../context/wishlistContext'
 import { useCart } from '../context/cartContext'
+import { useAuth } from '../context/AuthContext'
 
 import { AiFillHeart, AiOutlineClose } from 'react-icons/ai'
 import { GiBeachBag, GiHamburgerMenu } from 'react-icons/gi'
+import { FaUserCircle } from 'react-icons/fa'
 
 import '../styles/Header.css'
 
@@ -14,6 +16,8 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const { wishlist } = useWishlist()
   const { cart } = useCart()
+  const { isUser } = useAuth()
+
   return (
     <header className='header'>
       <Link to="/" className="header__logo">
@@ -25,7 +29,14 @@ const Header = () => {
       </div>
       <nav className={`navbar flex ${open ? "navbar-visible" : ""} `}>
         <div className="navbar__right flex align-center">
-          <Link to='/auth' className="login flex align-center">LOGIN/SIGNUP</Link>
+          {
+            isUser ? (
+              <Link to='#' className="flex align-center">
+                <FaUserCircle />
+                <span>User</span>
+              </Link>
+            ) : (<Link to='/auth' className="login flex align-center">LOGIN/SIGNUP</Link>
+            )}
           <Link to='/wishlist' className='wishlist-link flex align-center'>
             <AiFillHeart style={{
               color: 'red'
