@@ -1,6 +1,7 @@
 .filter-container {
   flex: 0.2;
   width: 20%;
+  margin-top: 2rem;
   height: calc(100vh - 80px);
   padding: 2rem;
   color: var(--gray-300);

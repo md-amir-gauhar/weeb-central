@@ -60,6 +60,7 @@ const dataReducer = (state, { type, payload }) => {
         },
         sortByPrice: "",
         sortByRating: "",
+        priceRange: ""
       }
     default:
       return state
