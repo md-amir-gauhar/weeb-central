@@ -58,9 +58,10 @@ const dataReducer = (state, { type, payload }) => {
           ...state.category,
           ...newObj
         },
+        priceRange: "",
         sortByPrice: "",
         sortByRating: "",
-        priceRange: ""
+        
       }
     default:
       return state
