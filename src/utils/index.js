@@ -7,24 +7,25 @@ export const filterData = (products, categories) => {
 }
 
 export const sortData = (products, sortByPrice, priceRange, sortByRating) => {
+  let sortedProducts;
   switch (sortByPrice) {
     case "low-to-high":
-      products = products.sort((a, b) => a.price - b.price)
+      sortedProducts = products.sort((a, b) => a.price - b.price)
       break
     case "high-to-low":
-      products = products.sort((a, b) => b.price - a.price)
+      sortedProducts = products.sort((a, b) => b.price - a.price)
       break
     default:
-      products = products
+      sortedProducts = products
   }
 
   if (sortByRating) {
-    products = products.filter(product => product.rating >= sortByRating)
+    sortedProducts = products.filter(product => product.rating >= sortByRating)
   }
 
-  if(priceRange) {
-    products = products.filter(product => product.price <= +priceRange)
+  if (priceRange) {
+    sortedProducts = products.filter(product => product.price <= +priceRange)
   }
 
-  return products
+  return sortedProducts
 }
