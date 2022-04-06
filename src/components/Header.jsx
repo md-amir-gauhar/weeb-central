@@ -50,14 +50,14 @@ const Header = () => {
               color: 'red'
             }} />
             <span>Wishlist</span>
-            {wishlist.length > 0 ? <span className='wishlist-length'>{wishlist.length}</span> : ""}
+            {isUser && wishlist.length > 0 ? <span className='wishlist-length'>{wishlist.length}</span> : ""}
           </Link>
           <Link to='/cart' className='cart-link flex align-center'>
             <GiBeachBag style={{
               color: '#d97706'
             }} />
             <span>Cart</span>
-            {cart.length > 0 ? <span className='cart-length' >{cart.length}</span> : ""}
+            {isUser && cart.length > 0 ? <span className='cart-length' >{cart.length}</span> : ""}
           </Link>
         </div>
       </nav>
