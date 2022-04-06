@@ -25,6 +25,11 @@ const dataReducer = (state, { type, payload }) => {
           ...category
         }
       }
+    case "PRICE_RANGE":
+      return {
+        ...state,
+        priceRange: payload
+      }
     case "SORT_BY_RATING":
       return {
         ...state,

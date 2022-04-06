@@ -3,12 +3,10 @@ export const filterData = (products, categories) => {
 
   const filteredProducts = products.filter(product => checkedCategories.includes(product.categoryName))
 
-  console.log(filteredProducts);
-
   return filteredProducts.length > 0 ? filteredProducts : products
 }
 
-export const sortData = (products, sortByPrice, sortByRating) => {
+export const sortData = (products, sortByPrice, priceRange, sortByRating) => {
   switch (sortByPrice) {
     case "low-to-high":
       products = products.sort((a, b) => a.price - b.price)
@@ -22,6 +20,10 @@ export const sortData = (products, sortByPrice, sortByRating) => {
 
   if (sortByRating) {
     products = products.filter(product => product.rating >= sortByRating)
+  }
+
+  if(priceRange) {
+    products = products.filter(product => product.price <= +priceRange)
   }
 
   return products

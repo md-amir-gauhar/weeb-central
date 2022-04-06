@@ -7,15 +7,15 @@ import '../styles/Products.css'
 import { filterData, sortData } from '../utils'
 
 const Products = () => {
-  const { products, categories, sortByPrice, sortByRating } = useData()
+  const { products, categories, sortByPrice, sortByRating, priceRange } = useData()
 
   const filteredData = filterData(products, categories)
 
-  const sortedData = sortData([...filteredData], sortByPrice, sortByRating)
+  const sortedData = sortData([...filteredData], sortByPrice, priceRange, sortByRating)
 
   return (
     <section className="products flex flex-col">
-      <h3>Showing Manga (<span>{products.length} Items</span>)</h3>
+      <h3>Showing Manga (<span>{sortedData.length} Items</span>)</h3>
       <div className="card-container flex justify-center">
         {
           sortedData.map(({ _id, title, price, imgUrl, rating }) => (

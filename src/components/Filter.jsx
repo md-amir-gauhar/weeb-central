@@ -10,7 +10,7 @@ import '../styles/Filter.css'
 const star = [4, 3, 2]
 
 const Filter = () => {
-  const { categories, dispatch, sortByPrice, sortByRating } = useData()
+  const { categories, dispatch, sortByPrice, sortByRating, priceRange } = useData()
 
   const sortByPriceHandler = e => {
     dispatch({
@@ -35,6 +35,13 @@ const Filter = () => {
     })
   }
 
+  const priceRangeHandler = (e) => {
+    dispatch({
+      type: "PRICE_RANGE",
+      payload: e.target.value
+    })
+  }
+
   const isSortByPrice = type => sortByPrice && sortByPrice === type
 
   const isSortByRating = star => sortByRating && sortByRating === star
@@ -54,7 +61,23 @@ const Filter = () => {
           <button onClick={clearAllHandler}>Clear All</button>
         </div>
         <div className="filter-sort">
-          <span>SORT BY PICE</span>
+          <span>PRICE RANGE</span>
+          <div className='flex justify-between'>
+            <p>400</p>
+            <p>1200</p>
+            <p>2000</p>
+          </div>
+          <input
+            className='slider'
+            type="range"
+            min={400}
+            max={2000}
+            value={priceRange}
+            onChange={e => priceRangeHandler(e)}
+          />
+        </div>
+        <div className="filter-sort">
+          <span>SORT BY PRICE</span>
           <div>
             <input
               type="radio"

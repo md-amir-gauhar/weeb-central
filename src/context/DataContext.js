@@ -33,6 +33,7 @@ const DataProvider = ({ children }) => {
     filteredProducts: state.filteredProducts,
     sortByPrice: state.sortByPrice,
     sortByRating: state.sortByRating,
+    priceRange: state.priceRange,
     dispatch,
   }
 
