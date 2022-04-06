@@ -32,7 +32,7 @@ const Payment = () => {
           price === 0 ? <span>₹{0}</span> : <span>₹{price + 99}</span>
         }
       </div>
-      <button>Place Order</button>
+      <button>Pay Now</button>
     </section>
   )
 }
