@@ -14,6 +14,7 @@ import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Manga from './pages/Manga';
 import Wishlist from './pages/Wishlist';
+import NotFound from './pages/NotFound';
 
 import './styles/app.css'
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products/manga" element={<Manga />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path='*' element={<NotFound />} />
           <Route path="/wishlist" element={
             <PrivateRoute>
               <Wishlist />
