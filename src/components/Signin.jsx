@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { setAuthData, setUserData } from '../utils/authUtil'
+import { setAuthData } from '../utils/authUtil'
 import { useAuth } from '../context/AuthContext'
 import { invalidCredentials, userDoesNotExists, loggedInSuccessfully } from '../utils/toasts'
 
